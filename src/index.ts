@@ -25,7 +25,9 @@ app.use(express.static('public'));
 mongoose.set('useCreateIndex', true);
 
 const PORT = process.env.PORT || 7000;
-mongoose
+
+setTimeout(()=> {
+  mongoose
   .connect(process.env.MONGO!, {
     useNewUrlParser: true
   })
@@ -37,5 +39,6 @@ mongoose
   .catch((e) => {
     console.error(`error to trying connected to mongodb ${e}`);
   });
+}, 5000);
 
 api(app);
